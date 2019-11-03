@@ -1,0 +1,135 @@
+SQLite version 3.30.0 2019-10-04 15:03:17
+Enter ".help" for usage hints.
+sqlite> select * from users;
+1|Joshua|Teng|jedicoder@example.com|2019-11-03 10:51:48|2019-11-03 10:51:48
+sqlite> insert into users INSERT INTO users
+   ...> (first_name, last_name, email, created_at, updated_at)
+   ...> VALUES
+   ...>
+   ...>
+   ...>
+   ...> INSERT INTO users
+   ...> (first_name, last_name, email, created_at, updated_at)
+   ...> VALUES
+   ...> ('Joshua', 'Teng', 'jedicoder@example.com', DATETIME('now'), DATETIME('now'));
+Error: near "INSERT": syntax error
+sqlite> INSERT INTO users
+   ...> (first_name, last_name, email, created_at, updated_at)
+   ...> VALUES
+   ...> ('Joshua', 'Teng', 'jedicoder@example.com', DATETIME('now'), DATETIME('now'));
+Error: UNIQUE constraint failed: users.email
+sqlite> INSERT INTO users
+   ...> (first_name, last_name, email, created_at, updated_at)
+   ...> VALUES
+   ...> ('Jonathan', 'Cheng', 'jc@email.com', datetime('now'), datetime('now'));
+sqlite> select * from users;
+1|Joshua|Teng|jedicoder@example.com|2019-11-03 10:51:48|2019-11-03 10:51:48
+2|Jonathan|Cheng|jc@email.com|2019-11-03 10:59:03|2019-11-03 10:59:03
+sqlite> alter table users
+   ...> add 'nicknames' varchar
+   ...> add 'nicknames' varchar;
+Error: near "add": syntax error
+sqlite> alter table users
+   ...> add nicknames varchar;
+sqlite> select * from users;
+1|Joshua|Teng|jedicoder@example.com|2019-11-03 10:51:48|2019-11-03 10:51:48|
+2|Jonathan|Cheng|jc@email.com|2019-11-03 10:59:03|2019-11-03 10:59:03|
+sqlite> .schema
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  first_name VARCHAR(64) NOT NULL,
+  last_name VARCHAR(64) NOT NULL,
+  email VARCHAR(128) UNIQUE NOT NULL,
+  created_at DATETIME NOT NULL,
+  updated_at DATETIME NOT NULL
+, nicknames varchar);
+CREATE TABLE sqlite_sequence(name,seq);
+sqlite> insert into users.nicknames where id=1 values('poopie booty')
+   ...> insert into users.nicknames where id=1 values('poopie booty')
+   ...>
+   ...>
+   ...>
+   ...> .schema
+   ...> select * from users;
+Error: near "where": syntax error
+sqlite> insert into users.nicknames where id=1 values('poopie booty');
+Error: near "where": syntax error
+sqlite> insert into users.nicknames values('poopy booty') where id=1;
+Error: near "where": syntax error
+sqlite> insert into users.nicknames values('poopy booty')
+   ...> select * from users;
+Error: near "select": syntax error
+sqlite> insert into users.nicknames values('poopy booty') ;
+Error: no such table: users.nicknames
+sqlite> select * from users
+   ...> select * from users
+   ...> select * from users;
+Error: near "select": syntax error
+sqlite> select * from users;
+1|Joshua|Teng|jedicoder@example.com|2019-11-03 10:51:48|2019-11-03 10:51:48|
+2|Jonathan|Cheng|jc@email.com|2019-11-03 10:59:03|2019-11-03 10:59:03|
+sqlite> insert into users
+   ...> values
+   ...> ('George', 'Willis', 'GeorgieW@email.com', datetime('now'), datetime('now')
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...>
+   ...> select * from users;
+Error: near "select": syntax error
+sqlite> insert into users
+   ...> values
+   ...> (nickames)
+   ...> ('poopy booty')
+   ...> ('poopy booty');
+Error: near "(": syntax error
+sqlite> insert into users where id =1
+   ...> values
+   ...> (nickames)
+   ...> ('poopy booty');
+Error: near "where": syntax error
+sqlite> update users set nicknames='pookie booty' where id =1
+   ...> update users set nicknames='pookie booty' where id =1;
+Error: near "update": syntax error
+sqlite> update users set nicknames='pookie booty' where id =1;
+sqlite> select * from users
+   ...> select * from users
+   ...> select * from users;
+Error: near "select": syntax error
+sqlite> select * from users;
+1|Joshua|Teng|jedicoder@example.com|2019-11-03 10:51:48|2019-11-03 10:51:48|pookie booty
+2|Jonathan|Cheng|jc@email.com|2019-11-03 10:59:03|2019-11-03 10:59:03|
+sqlite> update users nicknames='cool fella90' where id=2
+   ...> update users nicknames='cool fella90' where id=2;
+Error: near "nicknames": syntax error
+sqlite> update users nicknames='cool fella90' where id=2;
+Error: near "nicknames": syntax error
+sqlite> update users set nicknames='ok fella' where id=2
+   ...> update users set nicknames='ok fella' where id=2;
+Error: near "update": syntax error
+sqlite> update users set nicknames='ok fella' where id=2;
+sqlite> select * from users
+   ...> select * from users;
+Error: near "select": syntax error
+sqlite> select * from users;
+1|Joshua|Teng|jedicoder@example.com|2019-11-03 10:51:48|2019-11-03 10:51:48|pookie booty
+2|Jonathan|Cheng|jc@email.com|2019-11-03 10:59:03|2019-11-03 10:59:03|ok fella
+sqlite> update users set nicknames='Ninja Coder', first_name ='Josh', updated_at = datetime('now') where id =1
+   ...> update users set nicknames='Ninja Coder', first_name ='Josh', updated_at = datetime('now') where id =1;
+Error: near "update": syntax error
+sqlite> update users set nicknames='Ninja Coder', first_name ='Josh', updated_at = datetime('now') where id =1;
+sqlite> select * from users
+   ...> select * from users;
+Error: near "select": syntax error
+sqlite> select * from users;
+1|Josh|Teng|jedicoder@example.com|2019-11-03 10:51:48|2019-11-03 12:22:49|Ninja Coder
+2|Jonathan|Cheng|jc@email.com|2019-11-03 10:59:03|2019-11-03 10:59:03|ok fella
+sqlite>
